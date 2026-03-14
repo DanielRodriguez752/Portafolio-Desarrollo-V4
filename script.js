@@ -116,3 +116,37 @@ function buscarProyectos(){
 }
 buscarProyectos();
 
+/*botón para subir al inicio*/
+const botonArriba = document.getElementById("btn-arriba");
+window.addEventListener("scroll", function(){
+    if(window.scrollY > 300){
+        botonArriba.style.display = "block";
+    }else{
+        botonArriba.style.display = "none";
+    }
+});
+botonArriba.addEventListener("click", function(){
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+});
+
+/*animación de habilidades*/
+function animarSkills(){
+    const habilidades = document.querySelectorAll(".progreso");
+    const observer = new IntersectionObserver((entradas)=>{
+        entradas.forEach((entrada)=>{
+            if(entrada.isIntersecting){
+                const barra = entrada.target;
+                const nivel = barra.dataset.nivel;
+                barra.style.width = nivel + "%";
+            }
+        });
+    });
+    habilidades.forEach((habilidad)=>{
+        observer.observe(habilidad);
+    });
+}
+
+animarSkills();

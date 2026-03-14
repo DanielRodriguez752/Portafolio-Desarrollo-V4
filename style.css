@@ -6,6 +6,28 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+/* boton volver arriba */
+
+#btn-arriba{
+    position:fixed;
+    bottom:30px;
+    right:30px;
+    width:45px;
+    height:45px;
+    background:#6cc091;
+    color:white;
+    border:none;
+    border-radius:50%;
+    font-size:20px;
+    cursor:pointer;
+    display:none;
+    transition:0.3s;
+}
+
+#btn-arriba:hover{
+    background:#4D4D5C;
+}
+
 /*header*/
 header{
     height: 100px;
@@ -134,13 +156,15 @@ header{
     width:100%;
     height:10px;
     background:#ddd;
-    border-radius:50px;
+    border-radius:5px;
 }
 
 .progreso{
+    width:0;
     height:10px;
-    background:#c74376;
+    background:#d47aa4;
     border-radius:5px;
+    transition:width 1.5s ease;
 }
 
 /* niveles */
