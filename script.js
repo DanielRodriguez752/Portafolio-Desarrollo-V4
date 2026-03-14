@@ -13,17 +13,16 @@ async function cargarProyectos() {
     const contenedorProyectos = document.getElementById("contenedor-proyectos");
     contenedorProyectos.innerHTML = "";
     proyectos.forEach((proyecto) => {
-      contenedorProyectos.innerHTML += `
-        <div class="proyecto-card">
+      contenedor.innerHTML += `
+        <div class="proyecto-card"
+            data-nombre="${proyecto.name}"
+            data-descripcion="${proyecto.description || 'Sin descripción'}"
+            data-link="${proyecto.html_url}">
             <h4>${proyecto.name}</h4>
             <p>${proyecto.description || "Sin descripción"}</p>
-            <p><strong>Lenguaje:</strong> ${proyecto.language || "No definido"}</p>
-
-            <a href="${proyecto.html_url}" target="_blank" class="boton-saber-mas">
-                Ver en GitHub
-            </a>
+            <p><strong>Lenguaje:</strong> ${proyecto.language || "No especificado"}</p>
         </div>
-    `;
+        `;
     });
     animarProyectos();/*animación al cargar proyectos*/
   } catch (error) {
@@ -150,3 +149,30 @@ function animarSkills(){
 }
 
 animarSkills();
+
+/*ventana flotante de proyectos*/
+const contenedor2 = document.getElementById("contenedor-proyectos");
+
+const modal = document.getElementById("modal-proyecto");
+const modalTitulo = document.getElementById("modal-titulo");
+const modalDescripcion = document.getElementById("modal-descripcion");
+const modalLink = document.getElementById("modal-link");
+const cerrarModal = document.getElementById("cerrar-modal");
+
+contenedor2.addEventListener("click", function(e){
+
+    const tarjeta = e.target.closest(".proyecto-card");
+
+    if(!tarjeta) return;
+
+    modalTitulo.textContent = tarjeta.dataset.nombre;
+    modalDescripcion.textContent = tarjeta.dataset.descripcion;
+    modalLink.href = tarjeta.dataset.link;
+
+    modal.style.display = "flex";
+
+});
+
+cerrarModal.addEventListener("click", function(){
+    modal.style.display = "none";
+});

@@ -6,6 +6,35 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+/* ventana emergente */
+
+.modal{
+    display:none;
+    position:fixed;
+    z-index:200;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+    justify-content:center;
+    align-items:center;
+}
+
+.modal-contenido{
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    max-width:500px;
+    text-align:center;
+}
+
+#cerrar-modal{
+    float:right;
+    font-size:25px;
+    cursor:pointer;
+}
+
 /* boton volver arriba */
 
 #btn-arriba{
